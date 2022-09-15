@@ -1,14 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useRoutes, BrowserRouter } from 'react-router-dom'
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route
+// } from "react-router-dom";
+import Home from './pages/Home/index.jsx'
 
 function App() {
+{/* <BrowserRouter> */}
+  let element = useRoutes([
+    {
+      path: '/',
+      element: <Home/>
+    },
+    // {
+    //   path: '/game',
+    //   element: <Game/>
+    // }
+  ])
+  // </BrowserRouter>
 
-  return (
-    <div className="App">
-      app
-    </div>
-  )
+  return <BrowserRouter>{element}</BrowserRouter>
+
+  // return element
 }
 
 export default App
