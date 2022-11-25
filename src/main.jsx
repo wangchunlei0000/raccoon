@@ -6,9 +6,11 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 
+const basename = import.meta.env.VITE_GITHUB_CI ? '/raccoon/' : ''
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Router>
+    <Router basename={basename}>
 
     <App />
     </Router>
