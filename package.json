@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "buildci": "vite build --base=/raccoon/"
+    "buildci": "VITE_GITHUB_CI=true vite build --base=/raccoon/"
   },
   "dependencies": {
     "react": "^18.2.0",
