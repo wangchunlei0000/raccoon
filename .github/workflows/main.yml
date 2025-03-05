@@ -1,28 +1,30 @@
-name: Publish to Github Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - master
+    branches: [ "main" ]  # 监听main分支的推送
 
 jobs:
-  build-deploy:
-    runs-on: ubuntu-18.04
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      # 安装依赖
-      - run: npm ci
-      - run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      # 打包
-      - run: npm run build
+      - name: Install Dependencies
+        run: npm install
 
-      # 部署
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v2.5.0
-        env:
-          PERSONAL_TOKEN: ${{ secrets.DEPLOY_KEY }}
-          PUBLISH_BRANCH: gh-pages
-          # 生成文件的目录
-          PUBLISH_DIR: ./build
+      - name: Build Project
+        run: npm run build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.DEPLOY_KEY }}
+          publish_dir: ./build
