@@ -1,0 +1,7 @@
+# 忽略目录
+dist/
+tests/
+demo/
+
+# node 覆盖率文件
+coverage/
