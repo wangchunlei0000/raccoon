@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  console.log('%c [ start== ]-5', 'font-size:13px; background:#555cb3; color:#99a0f7;', )
   return (
     <div className="App">
       <header className="App-header">
